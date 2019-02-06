@@ -5,6 +5,7 @@ Vue.use(Router)
 
 const Login = () => import('../views/Login.vue')
 const Home = () => import('../views/Home.vue')
+const PaperDetail = () => import('../views/PaperDetail.vue')
 
 export default new Router({
   routes: [
@@ -21,6 +22,11 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/paper/:testId',
+      name: 'PaperDetail',
+      component: PaperDetail,
     },
   ]
 })

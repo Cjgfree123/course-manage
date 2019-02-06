@@ -35,25 +35,24 @@ export default {
   },
   methods: {
     onLogin() {
-      let that = this;
       axios
         .post(loginUrl, {
           userName: this.userName,
           psw: this.psw
         })
-        .then(function({ data: res }) {
+        .then(({ data: res }) => {
           console.log(res);
           if (res.errcode === 0) {
             // 全局提示请求成功
             // 跳转到课程列表页面
             if (!res.data.isAdmin) {
-              that.$router.push({
+              this.$router.push({
                 path: "/home"
               });
             }
           }
         })
-        .catch(function(error) {
+        .catch(error => {
           console.log(error);
         });
     }
