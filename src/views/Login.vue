@@ -21,6 +21,7 @@
 <script>
 // @ is an alias to /src
 import axios from "axios";
+import {mapMutations} from 'vuex';
 import { loginUrl } from "@/api/baseUrl.js";
 
 export default {
@@ -30,7 +31,10 @@ export default {
       form: {
         userName: "",
         psw: ""
-      }
+      },
+      userName:'',
+      isAdmin:false,
+      userId:1,
     };
   },
   methods: {
@@ -43,20 +47,23 @@ export default {
         .then(({ data: res }) => {
           console.log(res);
           if (res.errcode === 0) {
+            this.userName = res.userName;
+            this.isAdmin = res.isAdmin ;
+            this.userId = res.userId;
             // 全局提示请求成功
             // 跳转到课程列表页面
-            if (!res.data.isAdmin) {
-              this.$router.push({
-                path: "/home"
-              });
-            }
+            this.$router.push({
+              path: "/home"
+            });
+            this.SetUserInfo(12);
           }
         })
         .catch(error => {
           console.log(error);
         });
-    }
-  }
+    },
+    ...mapMutations(['SET_USER_INFO'])
+  },
 };
 </script>
 

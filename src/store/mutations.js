@@ -1,5 +1,17 @@
-import * as types from './mutation-types'
+import {SetUserInfo} from './mutation-types'
 
-const mutations = {};
+let mutations={ 
+    SetUserInfo(state,payload){ 
+        console.log(payload)
+        return {
+            ...state,
+            userName:payload.userName,
+            isAdmin:payload.isAdmin,
+            userId:payload.userId,
+        }
+    },
+};
 
-export default mutations;
+module.export = mutations;
+
+

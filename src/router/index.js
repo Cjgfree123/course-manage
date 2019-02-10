@@ -6,6 +6,7 @@ Vue.use(Router)
 const Login = () => import('../views/Login.vue')
 const Home = () => import('../views/Home.vue')
 const PaperDetail = () => import('../views/PaperDetail.vue')
+const userInfo = () => import('../views/UserInfo.vue')
 
 export default new Router({
   routes: [
@@ -24,9 +25,14 @@ export default new Router({
       component: Home
     },
     {
-      path: '/paper/:testId',
+      path: '/paper/:type/:testId',// view edit
       name: 'PaperDetail',
       component: PaperDetail,
     },
+    {
+      path:'/userInfo/:userId',
+      name:'userInfo',
+      component:userInfo,
+    }
   ]
 })

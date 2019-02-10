@@ -16,7 +16,9 @@
         active-text-color="#fff"
       >
         <el-menu-item index="1">课程列表</el-menu-item>
-        <el-menu-item index="2">个人主页</el-menu-item>
+        <el-menu-item index="2">
+          <router-link :to="{path:`userInfo/${userId}`}">个人主页</router-link>
+        </el-menu-item>
       </el-menu>
     </div>
   </div>
@@ -24,7 +26,7 @@
 
 <script>
 // @ is an alias to /src
-
+import {mapState} from 'vuex';
 export default {
   name: "Header",
   data() {
@@ -36,6 +38,9 @@ export default {
     handleSelect(key, keyPath) {
       this.activeIndex = `${key}`;
     }
+  },
+  computed:{
+    ...mapState(['userId'])
   }
 };
 </script>
